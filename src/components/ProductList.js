@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { TheConsumer } from '../TheContext';
+import { ProductConsumer } from '../Context';
+import Product from './Product';
 
 export default class ProductList extends Component {
     render() {
         return (
             <React.Fragment>
-            <TheConsumer>
-                <h1>state:</h1>
-                {(value)=> {return <h1>{value}</h1>;}}
-            </TheConsumer>
+                <ProductConsumer>
+                    {(value)=> {return <div>{value.map(product => (<Product product={product} key={product.id} />))}</div>;}} 
+                </ProductConsumer>
             </React.Fragment> 
         )
     }
