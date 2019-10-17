@@ -10,7 +10,7 @@ export default class ProductList extends Component {
                     <ProductConsumer>
                         {(value)=> {
                             return <div className="card-deck">
-                            {value.map(product => (
+                            {value.products.map(product => (
                             <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3">
                                 <Product product={product} key={product.id} />
                                 </div>))}</div>;}} 
