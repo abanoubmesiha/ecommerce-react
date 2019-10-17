@@ -18,8 +18,7 @@ export default class App extends Component {
         <Route exact path='/' component={ProductList} />
               <Route path='/Cart' component={Cart} />
               <Route path='/Details' component={Details} />
-              <Route path='/Details' component={Details} />
-              <Route path='/Default' component={Default} />
+             <Route path='/Default' component={Default} />
              
         </Switch>
       </React.Fragment>
