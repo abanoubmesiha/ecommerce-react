@@ -6,22 +6,16 @@ export default class ProductList extends Component {
     render() {
         return (
             <React.Fragment>
-               <div className="container my-5">
-                 {/*title */}
-                     <div className="row">
-                        <div className="col-10 mx-auto col-md-6 text-center text-uppercase mb-3">
-                            <h1 className="text-slanted">Product list</h1>
-                        </div>
-                    </div>
-                    {/*end of title*/}
-                    <div className="row">
-                    
+              <div className="container d-flex justify-content-around">
                     <ProductConsumer>
-                     {(value)=> {return <div>{value.map(product => (<Product product={product} key={product.id} />))}</div>;}} 
-                </ProductConsumer>
-                    </div>
-                </div>
-                
+                        {(value)=> {
+                            return <div className="card-deck">
+                            {value.map(product => (
+                            <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                                <Product product={product} key={product.id} />
+                                </div>))}</div>;}} 
+                    </ProductConsumer>
+              </div>
             </React.Fragment> 
         )
     }

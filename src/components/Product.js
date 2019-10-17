@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import "./Product.css";
+import "./Product.scss";
 
 export default class Product extends Component {
   
@@ -8,25 +8,20 @@ export default class Product extends Component {
         return (
             <React.Fragment>
                
-               <div className="col-10 mx-auto col-md-6 col-lg-4 my-3">
-                    <div className="card">
-                        <img src={img} className="img-card-top"
-                        style={{height:"14rem"}} alt="recipe" />
-                        <div className="card-body text-capitalize">
-                            <h6>{title}</h6>
-                            <h6 className="text-warning text-slanted">provided by {company}</h6>
-                        </div>
-                        <div className="card-footer">
-                            <button type="button"
-                                    className="btn btn-primary text-capitalize">details</button>
-                            <a href={id} className="btn btn-success mx-2 text-capitalize"
-                             target="_blank" rel="noopener noreferrer">
-                                recipe url
-                            </a>
+              
+                    <div class="card my-4">
+                        <div className="img-container">
+                        <img src={img} class="card-img-top" alt="..." />
+                      
+                       <button>Add to Cart</button>
+                       </div>
+                        <div class="card-footer">
+
+                        <span class="text-muted">{title}</span>
+                        <span class="text-muted float-right">${price}</span>
                         </div>
                     </div>
                     
-                </div>
             </React.Fragment>
         )
     }
