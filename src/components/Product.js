@@ -13,7 +13,7 @@ export default class Product extends Component {
                         <div className="img-container">
                         <img src={img} class="card-img-top" alt="..." />
                       
-                       <button>Add to Cart</button>
+                       <span className="btn btn-primary"><i class="fas fa-shopping-cart" /> Add to Cart</span>
                        </div>
                         <div class="card-footer">
 
