@@ -12,7 +12,7 @@ class ProductProvider extends Component {
             products: storeProducts,
             detailProduct:{},
             cart:[],
-            modalStatus:true 
+            modalStatus:false 
         };
         this.addToCart=this.addToCart.bind(this);
         this.handleGetDetailProduct=this.handleGetDetailProduct.bind(this);
