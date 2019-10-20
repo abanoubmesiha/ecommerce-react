@@ -6,7 +6,7 @@ import {ProductConsumer} from '../Context';
 export default class Product extends Component {
   
     render() {
-        const {id,title,img,price,company,info,inCart,count,total} = this.props.product;
+        const {id,title,img,price,inCart} = this.props.product;
         return (
             <React.Fragment>
                
@@ -17,8 +17,14 @@ export default class Product extends Component {
                                 return <div className="img-container" onClick={value.handleGetDetailProduct.bind(this,id)}>
                             <Link to="/Details"><img src={img} className="card-img-top" alt="..." /></Link>
                             {inCart?<span className="btn btn-primary disabled">
-                                            <i className="fas fa-shopping-cart" /> In Cart</span> :<span className="btn btn-primary">
-                                            <i className="fas fa-shopping-cart" /> Add to Cart</span>}
+                                            <i className="fas fa-shopping-cart" />
+                                            In Cart
+                                            </span> : 
+                                                <span className="btn btn-primary" 
+                                                        onClick={value.addToCart.bind(this,id)}>
+                                            <i className="fas fa-shopping-cart" />
+                                            Add to Cart
+                                            </span>}
                             
                             </div>
                             }}

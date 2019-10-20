@@ -5,6 +5,7 @@ import Default from './components/Default' ;
 import Details from './components/Details' ;
 import Navbar from './components/Navbar' ;
 import ProductList from './components/ProductList' ;
+import Modal from './components/Modal' ;
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Switch, Route, Link} from 'react-router-dom';
 
@@ -21,6 +22,7 @@ export default class App extends Component {
              <Route path='/Default' component={Default} />
              
         </Switch>
+        <Modal />
       </React.Fragment>
     )
   }
