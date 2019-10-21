@@ -1,6 +1,5 @@
 import React, { createContext, Component } from 'react';
 import {storeProducts} from './data'; 
-import { functionDeclaration } from '@babel/types';
 
 const TheContext = React.createContext();
 const {Provider, Consumer} = TheContext;
@@ -12,12 +11,22 @@ class ProductProvider extends Component {
             products: storeProducts,
             detailProduct:{},
             cart:[],
-            modalStatus:false 
+            modalStatus:false,
+
         };
         this.addToCart=this.addToCart.bind(this);
         this.handleGetDetailProduct=this.handleGetDetailProduct.bind(this);
         this.closeModal=this.closeModal.bind(this);
+        this.handleIncart=this.handleIncart.bind(this);
         
+    }
+    handleIncart(id){
+         function finder(x){
+            return x.id === id;
+         }
+         const product = this.state.cart.find(finder);
+         if (product !== undefined) return true;
+         else return false;
     }
     closeModal(){
         this.setState({
@@ -56,6 +65,7 @@ render() {
             addToCart:this.addToCart,
             handleGetDetailProduct:this.handleGetDetailProduct,
             closeModal:this.closeModal,
+            handleIncart:this.handleIncart,
             
             }}>
             {this.props.children}
