@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.css';
-import Cart from './components/Cart' ;
+import Cart from './components/Cart/' ;
 import Default from './components/Default' ;
 import Details from './components/Details' ;
 import Navbar from './components/Navbar' ;
