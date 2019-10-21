@@ -3,7 +3,7 @@ import EmptyCart from './EmptyCart';
 import FullCart from './FullCart';
 import CartColumns from './CartColumns';
 import {ProductConsumer} from '../../Context';
-
+import Totals from './Totals';
 
 export default class Cart extends Component {
     render() {
@@ -17,6 +17,7 @@ export default class Cart extends Component {
                         <div className="container">
                                 <CartColumns />
                                 <FullCart value={value} />
+                                <Totals value={value}/>
                         </div>
                         )}}}
                 
