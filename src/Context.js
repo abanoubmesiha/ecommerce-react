@@ -40,6 +40,25 @@ class ProductProvider extends Component {
             totals : totalsCopy
         })
     }
+    handleDeleteItem(id){
+        function findOthers(x){
+            return x.id !== id;
+        }
+        let cartCopy = this.state.cart.filter(findOthers);
+        this.setState({
+            cart:cartCopy,
+        })
+        let totalArr = cartCopy.map(item=>item.total);
+        const reducer = (accumulator, currentValue) => accumulator + currentValue;
+        let totalSum = totalArr.reduce(reducer);
+        let totalsCopy = this.state.totals;
+        totalsCopy.withoutTax = totalSum;
+        totalsCopy.tax = parseFloat((totalSum * 0.1).toFixed(2));
+        totalsCopy.withTax = parseFloat(totalsCopy.withoutTax + totalsCopy.tax);
+        this.setState({
+            totals : totalsCopy
+        })
+    }
     handleAddCount(id){
         function finder(x){
             return x.id === id;
@@ -70,16 +89,6 @@ class ProductProvider extends Component {
             cart:cartCopy
          })
            
-    }
-    handleDeleteItem(id){
-        function findOthers(x){
-            return x.id !== id;
-        }
-        let cartCopy = this.state.cart.filter(findOthers);
-        this.handleTotalOfItems();
-        this.setState({
-            cart:cartCopy
-         })
     }
     handleIncart(id){
          function finder(x){
