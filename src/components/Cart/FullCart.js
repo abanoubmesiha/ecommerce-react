@@ -17,7 +17,7 @@ export default function FullCart() {
                         ${price}
                     </div>
                     <div className="col-sm-10 col-md-2">
-                        {count} Pcs
+                        { count } Pcs
                     </div>
                     <div className="col-sm-10 col-md-2">
                         <span className="btn btn-primary"  onClick={value.handleDeleteCount.bind(this,id)}>-</span>

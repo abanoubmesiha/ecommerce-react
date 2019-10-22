@@ -44,6 +44,7 @@ class ProductProvider extends Component {
         let itemIndex = this.state.cart.findIndex(finder);
         let cartCopy = this.state.cart.slice();
         cartCopy[itemIndex].count -= 1;
+        if (cartCopy[itemIndex].count == 0) return this.handleDeleteItem(id);
          this.setState({
             cart:cartCopy
          })
