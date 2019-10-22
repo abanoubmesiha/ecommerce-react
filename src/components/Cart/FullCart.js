@@ -1,12 +1,12 @@
 import React from 'react'
-
-export default function FullCart({value}) {
-       const {cart} = value;
-        
+import {ProductConsumer} from '../../Context';
+export default function FullCart() {
+       
     return (
-        <React.Fragment>
-            {cart.map(item => { 
-                const { title, img, price, count, total } = item ;
+        <ProductConsumer>
+            
+        {(value)=>value.cart.map(item => { 
+                const { title, img, price, count, total, id } = item ;
                 return (
                 <div className="row border-bottom border-primary d-flex text-center align-items-center justify-content-between my-1">
                     <div className=" col-sm-10 col-md-2">
@@ -17,18 +17,18 @@ export default function FullCart({value}) {
                         ${price}
                     </div>
                     <div className="col-sm-10 col-md-2">
-                        {count}
+                        {count} Pcs
                     </div>
                     <div className="col-sm-10 col-md-2">
-                        <span className="btn btn-primary" >-</span>
-                        <span className="mx-1 my-1 btn btn-primary fa fa-trash" />
-                        <span className="btn btn-primary" >+</span>
+                        <span className="btn btn-primary"  onClick={value.handleDeleteCount.bind(this,id)}>-</span>
+                        <span className="mx-1 my-1 btn btn-primary fa fa-trash" onClick={value.handleDeleteItem.bind(this,id)}/>
+                        <span className="btn btn-primary"  onClick={value.handleAddCount.bind(this,id)}>+</span>
                     </div>
                     <div className="col-sm-10 col-md-2">
-                        {total}
+                        ${total}
                     </div>
                 </div>
             )})}
-        </React.Fragment>
+        </ProductConsumer>
     )
 }
