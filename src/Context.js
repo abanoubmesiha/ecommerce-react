@@ -12,6 +12,11 @@ class ProductProvider extends Component {
             detailProduct:{},
             cart:[],
             modalStatus:false,
+            totals: {
+                withoutTax:0,
+                tax : 0,
+                withTax:0
+            }
 
         };
         this.addToCart=this.addToCart.bind(this);
@@ -27,8 +32,13 @@ class ProductProvider extends Component {
         let totalArr = this.state.cart.map(item=>item.total);
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
         let totalSum = totalArr.reduce(reducer);
-        
-        
+        let totalsCopy = this.state.totals;
+        totalsCopy.withoutTax = totalSum;
+        totalsCopy.tax = parseFloat((totalSum * 0.1).toFixed(2));
+        totalsCopy.withTax = parseFloat(totalsCopy.withoutTax + totalsCopy.tax);
+        this.setState({
+            totals : totalsCopy
+        })
     }
     handleAddCount(id){
         function finder(x){
