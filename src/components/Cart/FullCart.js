@@ -1,8 +1,12 @@
-import React from 'react'
+import React , {Component} from 'react'
 import {ProductConsumer} from '../../Context';
-export default function FullCart() {
-       
-    return (
+
+export default class FullCart extends Component {
+    constructor() {
+        super();
+    }
+    render() {
+        return (
         <ProductConsumer>
             
         {(value)=>value.cart.map(item => { 
@@ -25,10 +29,10 @@ export default function FullCart() {
                         <span className="btn btn-primary"  onClick={value.handleAddCount.bind(this,id)}>+</span>
                     </div>
                     <div className="col-sm-10 col-md-2">
-                        ${total}
+                        ${total }
                     </div>
                 </div>
             )})}
         </ProductConsumer>
-    )
+         ) }
 }

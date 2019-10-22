@@ -31,6 +31,7 @@ class ProductProvider extends Component {
         let itemIndex = this.state.cart.findIndex(finder);
         let cartCopy = this.state.cart.slice();
         cartCopy[itemIndex].count += 1;
+        cartCopy[itemIndex].total = cartCopy[itemIndex].count * cartCopy[itemIndex].price;
          this.setState({
             cart:cartCopy
          })
@@ -106,7 +107,7 @@ render() {
             handleIncart:this.handleIncart,
             handleAddCount:this.handleAddCount,
             handleDeleteCount:this.handleDeleteCount,
-            handleDeleteItem:this.handleDeleteItem
+            handleDeleteItem:this.handleDeleteItem,
             
             }}>
             {this.props.children}
