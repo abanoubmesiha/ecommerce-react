@@ -16,8 +16,8 @@ export default class Cart extends Component {
                     return (
                         <div className="container">
                                 <CartColumns />
-                                <FullCart value={value} />
-                                <Totals value={value}/>
+                                <FullCart />
+                                <Totals props={value}/>
                         </div>
                         )}}}
                 

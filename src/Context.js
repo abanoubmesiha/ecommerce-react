@@ -23,6 +23,13 @@ class ProductProvider extends Component {
         this.handleDeleteItem=this.handleDeleteItem.bind(this);
         
     }
+    handleTotalOfItems(){
+        let totalArr = this.state.cart.map(item=>item.total);
+        const reducer = (accumulator, currentValue) => accumulator + currentValue;
+        let totalSum = totalArr.reduce(reducer);
+        
+        
+    }
     handleAddCount(id){
         function finder(x){
             return x.id === id;
@@ -32,7 +39,8 @@ class ProductProvider extends Component {
         let cartCopy = this.state.cart.slice();
         cartCopy[itemIndex].count += 1;
         cartCopy[itemIndex].total = cartCopy[itemIndex].count * cartCopy[itemIndex].price;
-         this.setState({
+        this.handleTotalOfItems();
+        this.setState({
             cart:cartCopy
          })
            
@@ -45,7 +53,9 @@ class ProductProvider extends Component {
         let itemIndex = this.state.cart.findIndex(finder);
         let cartCopy = this.state.cart.slice();
         cartCopy[itemIndex].count -= 1;
+        cartCopy[itemIndex].total = cartCopy[itemIndex].count * cartCopy[itemIndex].price;
         if (cartCopy[itemIndex].count == 0) return this.handleDeleteItem(id);
+        this.handleTotalOfItems();
          this.setState({
             cart:cartCopy
          })
@@ -56,6 +66,7 @@ class ProductProvider extends Component {
             return x.id !== id;
         }
         let cartCopy = this.state.cart.filter(findOthers);
+        this.handleTotalOfItems();
         this.setState({
             cart:cartCopy
          })
@@ -81,6 +92,7 @@ class ProductProvider extends Component {
          let product = this.state.products.find(finder);
          let Cart = this.state.cart;
          let addingToCart = Cart.push(product);
+         this.handleTotalOfItems();
          this.setState({
              cart:Cart,
              modalStatus:true
