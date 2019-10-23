@@ -53,6 +53,8 @@ class ProductProvider extends Component {
             cart:cartCopy,
         })
         let totalArr = cartCopy.map(item=>item.total);
+        if (totalArr.length === 0) return false;
+        else {
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
         let totalSum = totalArr.reduce(reducer);
         let totalsCopy = this.state.totals;
@@ -62,7 +64,7 @@ class ProductProvider extends Component {
         this.setState({
             totals : totalsCopy
         })
-    }
+    }}
     handleAddCount(id){
         function finder(x){
             return x.id === id;
