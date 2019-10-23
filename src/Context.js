@@ -26,7 +26,11 @@ class ProductProvider extends Component {
         this.handleAddCount=this.handleAddCount.bind(this);
         this.handleDeleteCount=this.handleDeleteCount.bind(this);
         this.handleDeleteItem=this.handleDeleteItem.bind(this);
+        this.handleCartLength=this.handleCartLength.bind(this);
         
+    }
+    handleCartLength(){
+        return this.state.cart.length ;
     }
     handleTotalOfItems(){
         let totalArr = this.state.cart.map(item=>item.total);
@@ -139,6 +143,7 @@ render() {
             handleAddCount:this.handleAddCount,
             handleDeleteCount:this.handleDeleteCount,
             handleDeleteItem:this.handleDeleteItem,
+            handleCartLength:this.handleCartLength
             
             }}>
             {this.props.children}
