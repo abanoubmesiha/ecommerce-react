@@ -30,8 +30,13 @@ class ProductProvider extends Component {
         
     }
     handleCartLength(){
-        return this.state.cart.length ;
-    }
+        let countArr = this.state.cart.map(item=>item.count);
+        if (countArr.length === 0) return false;
+        else {
+        const reducer = (accumulator, currentValue) => accumulator + currentValue;
+        let totalSum = countArr.reduce(reducer);
+        return `(${totalSum})`;
+    }}
     handleTotalOfItems(){
         let totalArr = this.state.cart.map(item=>item.total);
         const reducer = (accumulator, currentValue) => accumulator + currentValue;

@@ -18,7 +18,7 @@ export default class Navbar extends Component {
                                         </div>
                                     <div className="ml-auto p-2 bd-highlight">
                                         <Link to="/Cart"><button type="button" className="btn btn-warning" >
-                                            <i className="fas fa-cart-plus"></i> My Cart ({value.handleCartLength()})</button></Link>
+                                            <i className="fas fa-cart-plus"></i> My Cart {value.handleCartLength()}</button></Link>
                                             </div>
                                 </div>
                             </nav>
